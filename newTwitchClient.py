@@ -27,6 +27,12 @@ class TwitchApi():
         req = req.json()
         return req['data'][0]['id']
 
+    def GetUserInfo(self, login):
+        req = requests.get("https://api.twitch.tv/helix/users?login="+login, headers=self.authHeader)
+        if req.status_code != 200:
+            return {"response":"User not found!"}
+        return req.json()
+
     def GetChannelInfo(self, uid=None, login=None):
         if uid==None and login==None:
             return {"response":"Require parameter missing"}

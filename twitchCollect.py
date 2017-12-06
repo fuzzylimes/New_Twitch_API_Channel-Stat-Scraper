@@ -18,13 +18,28 @@ for stream in channels['channels']:
             "viewers": status['viewer_count'],
             "started": status['started_at'],
             "chatters": twitch.GetChatters(stream)['chatter_count'],
-            "log_time": datetime.datetime.now().isoformat()
+            "log_time": datetime.datetime.now().isoformat(),
+            "view_count": twitch.GetUserInfo(stream)['data'][0]['view_count'],
+            "follower_count": "NULL"
+        }
+    else:
+        info = {
+            "channel_name": stream,
+            "channel_id": "NULL",
+            "game_id": "NULL",
+            "game_name": "NULL",
+            "viewers": "NULL",
+            "started": "NULL",
+            "chatters": twitch.GetChatters(stream)['chatter_count'],
+            "log_time": datetime.datetime.now().isoformat(),
+            "view_count": twitch.GetUserInfo(stream)['data'][0]['view_count'],
+            "follower_count": "NULL"
         }
 
-        file_exists = os.path.isfile("csv/{}.csv".format(stream))
-        with open('csv/{}.csv'.format(stream), 'a') as csvfile:
-            fieldnames = ["log_time", "channel_name", "channel_id", "game_id", "game_name", "viewers", "started", "chatters"]
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            if not file_exists:
-                writer.writeheader()
-            writer.writerow(info)
+    file_exists = os.path.isfile("csv/{}.csv".format(stream))
+    with open('csv/{}.csv'.format(stream), 'a') as csvfile:
+        fieldnames = ["log_time", "channel_name", "channel_id", "game_id", "game_name", "viewers", "started", "chatters", "view_count", "follower_count"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(info)
