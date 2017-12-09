@@ -36,6 +36,8 @@ for stream in channels['channels']:
             "follower_count": "NULL"
         }
 
+    if not os.path.exists("csv"):
+        os.makedirs("csv")
     file_exists = os.path.isfile("csv/{}.csv".format(stream))
     with open('csv/{}.csv'.format(stream), 'a') as csvfile:
         fieldnames = ["log_time", "channel_name", "channel_id", "game_id", "game_name", "viewers", "started", "chatters", "view_count", "follower_count"]
