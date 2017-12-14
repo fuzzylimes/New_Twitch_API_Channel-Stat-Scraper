@@ -18,7 +18,7 @@ for stream in channels['channels']:
             "viewers": status['viewer_count'],
             "started": status['started_at'],
             "chatters": twitch.GetChatters(stream)['chatter_count'],
-            "log_time": datetime.datetime.now().isoformat(),
+            "log_time": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "view_count": twitch.GetUserInfo(stream)['data'][0]['view_count'],
             "follower_count": "NULL"
         }
@@ -31,7 +31,7 @@ for stream in channels['channels']:
             "viewers": "NULL",
             "started": "NULL",
             "chatters": twitch.GetChatters(stream)['chatter_count'],
-            "log_time": datetime.datetime.now().isoformat(),
+            "log_time": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "view_count": twitch.GetUserInfo(stream)['data'][0]['view_count'],
             "follower_count": "NULL"
         }
