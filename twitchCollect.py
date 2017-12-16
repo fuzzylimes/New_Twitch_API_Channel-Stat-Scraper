@@ -17,6 +17,7 @@ for stream in channels['channels']:
     if not "response" in status:
         status = status['data'][0]
         game_id = status['game_id']
+        count = twitch.GetFollowers(status['user_id'])
 
         # Check to see if the game is already in our saved games list
         if game_id in games:
@@ -36,7 +37,7 @@ for stream in channels['channels']:
             "chatters": twitch.GetChatters(stream)['chatter_count'],
             "log_time": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
             "view_count": twitch.GetUserInfo(stream)['data'][0]['view_count'],
-            "follower_count": "NULL"
+            "follower_count": count
         }
     else:
         info = {

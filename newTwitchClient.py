@@ -71,5 +71,5 @@ class TwitchApi():
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': CREDS.CLIENT_ID
         }
-        followers = requests.get('https://api.twitch.tv/kraken/channels/24761645/follows?limit=1', headers=headers).json()['_total']
+        followers = requests.get('https://api.twitch.tv/kraken/channels/{}/follows?limit=1'.format(id), headers=headers).json()['_total']
         return followers
