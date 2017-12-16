@@ -65,3 +65,11 @@ class TwitchApi():
             "global_mods": len(req.json()['chatters']['global_mods']),
             "viewers": len(req.json()['chatters']['viewers'])
         }
+    
+    def GetFollowers(self, id):
+        headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': CREDS.CLIENT_ID
+        }
+        followers = requests.get('https://api.twitch.tv/kraken/channels/24761645/follows?limit=1', headers=headers).json()['_total']
+        return followers
