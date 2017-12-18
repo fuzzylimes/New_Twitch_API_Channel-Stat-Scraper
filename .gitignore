@@ -3,3 +3,4 @@ __pycache__
 .vscode
 creds.py
 csv
+html/*.html
