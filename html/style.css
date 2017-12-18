@@ -1,0 +1,51 @@
+#bootstrap-overrides {
+    background-color: #fcfcfc;
+}
+
+.profile-section {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    opacity: 0.4;
+}
+
+.profile-banner {
+    background-size: cover;
+    opacity: 0.4;
+}
+
+.profile-section .card-body {
+    opacity: 1;
+}
+
+#stream_name {
+    font-size: 2em;
+}
+
+#game_record .card {
+    padding: 2em;
+    border: 0;
+}
+
+.card-title {
+    font-size: 2em;
+    font-style: bold;
+}
+
+.game-box {
+    padding: 2em;
+}
+
+.daily-record {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    /* margin: 2em 0 2em 0; */
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    align-content: center;
+    padding: 3em;
+}
