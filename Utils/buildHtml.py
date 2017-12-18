@@ -81,13 +81,11 @@ for file in os.listdir("../csv/"):
                         log_dict[group_date][game_number]['max_views'] = max_views
                         log_dict[group_date][game_number]['max_chat'] = max_chat
 
-        print(log_dict)
-
         with open("../html/"+f_name+'.html', 'w') as html_doc:
             html = htmlBlocks.html(f_name)
             html_doc.write(html.header())
             html_doc.write(html.streamer())
-            for day in list(log_dict.keys())[::-1]:
+            for day in sorted(list(log_dict.keys()))[::-1]:
                 start_time = ""
                 end_time = ""
                 game_list = []
