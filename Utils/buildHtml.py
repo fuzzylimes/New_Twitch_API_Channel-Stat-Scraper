@@ -10,11 +10,13 @@ if not os.path.exists('../html'):
 with open('../games.json') as game_data:
     games = json.load(game_data)
 
+month = str(datetime.datetime.now()).split()[0][:7]
 
 for file in os.listdir("../csv/"):
     print(file)
-    if file.endswith(".csv"):
-        f_name = file.split('.')[0]
+    if file.endswith(month+".csv"):
+        f_name = file.split('-')[0]
+        html_file_name = file.split('.')[0]
         with open('../csv/'+file, 'r') as csvfile:
             games_played = []
             last_played = "NULL"
@@ -81,7 +83,7 @@ for file in os.listdir("../csv/"):
                         log_dict[group_date][game_number]['max_views'] = max_views
                         log_dict[group_date][game_number]['max_chat'] = max_chat
 
-        with open("../html/"+f_name+'.html', 'w') as html_doc:
+        with open("../html/"+html_file_name+'.html', 'w') as html_doc:
             html = htmlBlocks.html(f_name)
             html_doc.write(html.header())
             html_doc.write(html.streamer())
