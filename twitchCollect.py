@@ -55,8 +55,9 @@ for stream in channels['channels']:
 
     if not os.path.exists("csv"):
         os.makedirs("csv")
-    file_exists = os.path.isfile("csv/{}.csv".format(stream))
-    with open('csv/{}.csv'.format(stream), 'a') as csvfile:
+    file_name = stream + "-" + str(datetime.datetime.now()).split()[0][:7]
+    file_exists = os.path.isfile("csv/{}.csv".format(file_name))
+    with open('csv/{}.csv'.format(file_name), 'a') as csvfile:
         fieldnames = ["log_time", "channel_name", "channel_id", "game_id", "game_name", "viewers", "started", "chatters", "view_count", "follower_count"]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         if not file_exists:
