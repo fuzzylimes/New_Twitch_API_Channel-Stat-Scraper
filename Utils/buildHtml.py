@@ -85,7 +85,7 @@ for file in os.listdir("../csv/"):
 
         with open("../html/"+html_file_name+'.html', 'w') as html_doc:
             html = htmlBlocks.html(f_name)
-            html_doc.write(html.header())
+            html_doc.write(html.header(html_file_name))
             html_doc.write(html.streamer())
             for day in sorted(list(log_dict.keys()))[::-1]:
                 start_time = ""
