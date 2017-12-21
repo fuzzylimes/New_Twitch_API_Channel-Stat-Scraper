@@ -4,3 +4,4 @@ __pycache__
 creds.py
 csv
 html/*.html
+json

@@ -92,38 +92,46 @@ class html():
             <div id="collapse_{0}" class="collapse" aria-labelledby="heading_{0}">""".format(date_index.replace(':','-'))
         return a+b+c+d
 
-    def body_two(self, game_icon, title, time_played, start_time, end_time, max_viewers, max_chatters):
+    def body_two(self, game_icon, title, time_played, start_time, start_tis, end_time, end_tis, max_viewers, max_chatters):
         return """                <div class="container" id="game_record">
                     <div class="card">
                         <div class="row">
                             <div class="col-md-3 text-center game-box align-self-center">
-                                <img src="{}">
+                                <img src="{0}">
                             </div>
                             <div class="col-md-9 align-self-center">
                                 <div class="card-block">
-                                    <div class="card-title">{} - {}</div>
+                                    <div class="card-title">{1} - {2}</div>
                                     <div class="card-text">
                                         <table class="table table-striped table-sm">
                                             <tbody>
                                                 <tr>
                                                     <td scope="row">Time Played</td>
-                                                    <td>{}</td>
+                                                    <td>{3}</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">Start Time</td>
-                                                    <td>{}</td>
+                                                    <td>{4}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">Timestamp</td>
+                                                    <td>{8}</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">End Time</td>
-                                                    <td>{}</td>
+                                                    <td>{5}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">Timestamp</td>
+                                                    <td>{9}</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">Max Viewers</td>
-                                                    <td>{}</td>
+                                                    <td>{6}</td>
                                                 </tr>
                                                 <tr>
                                                     <td scope="row">Max Chatters</td>
-                                                    <td>{}</td>
+                                                    <td>{7}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -132,7 +140,7 @@ class html():
                             </div>
                         </div>
                     </div>
-                </div>""".format(game_icon, title, time_played, time_played, start_time, end_time, max_viewers, max_chatters)
+                </div>""".format(game_icon, title, time_played, time_played, start_time, end_time, max_viewers, max_chatters, start_tis, end_tis)
     def body_three(self):
         return """                </div>
                     </div>
