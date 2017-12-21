@@ -19,6 +19,7 @@ for file in os.listdir("../csv/"):
     print(file)
     if file.endswith(month+".csv"):
         json_records = []
+        json_day_records = []
         f_name = file.split('-')[0]
         html_file_name = file.split('.')[0]
         with open('../csv/'+file, 'r') as csvfile:
@@ -138,7 +139,10 @@ for file in os.listdir("../csv/"):
                 
                 html_doc.write(html.body_three())
 
+                json_day_records.append({'session': day, 'data': json_records})
+                json_records = []
+
             html_doc.write(html.footer())
         
         with open("../json/"+html_file_name+'.json', 'w') as json_doc:
-            json.dump(json_records, json_doc)
+            json.dump(json_day_records, json_doc)
