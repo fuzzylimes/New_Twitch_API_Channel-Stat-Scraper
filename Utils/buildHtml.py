@@ -134,12 +134,14 @@ for file in os.listdir("../csv/"):
                         'playtime': playtime,
                         'box': box,
                         'start_tis': start_time_in_stream,
-                        'end_tis': end_time_in_stream
+                        'end_tis': end_time_in_stream,
+                        'max_views': max_views,
+                        'max_chat': max_chat
                     })
                 
                 html_doc.write(html.body_three())
 
-                json_day_records.append({'session': day, 'data': json_records})
+                json_day_records.append({'session': day, 'uptime': uptime, 'data': json_records})
                 json_records = []
 
             html_doc.write(html.footer())
