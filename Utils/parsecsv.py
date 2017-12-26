@@ -29,13 +29,6 @@ for open_file in os.listdir("../csv/"):
         file_name = open_file.split('.')[0]
 
         user_info = ph.User(f_name)
-        users.append({
-            'user_id': user_info.user_id,
-            'user_name': user_info.user_name,
-            'lower_name': user_info.user_name.lower(),
-            'user_image': user_info.user_image,
-            'user_background': user_info.user_background
-        })
 
         with open('../csv/'+open_file, 'r') as csvfile:
             games_played = []
@@ -106,6 +99,20 @@ for open_file in os.listdir("../csv/"):
                         max_chat = max(max_chat, int(line[7]))
                         log_dict[group_date][game_number]['max_views'] = max_views
                         log_dict[group_date][game_number]['max_chat'] = max_chat
+
+            if line[4] == "NULL":
+                status = False
+            else:
+                status = True
+
+        users.append({
+            'user_id': user_info.user_id,
+            'user_name': user_info.user_name,
+            'lower_name': user_info.user_name.lower(),
+            'user_image': user_info.user_image,
+            'user_background': user_info.user_background,
+            'user_status': status
+        })
 
         for day in sorted(list(log_dict.keys()))[::-1]:
             start_time = ""
