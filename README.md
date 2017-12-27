@@ -13,9 +13,9 @@ The mail file that is run to collect data is `twitchCollect.py`. This file uses 
 
 1. `newTwitchClient.py` - Main helper file for the scraper. This contians all of the base functions for contacting the twitch server. Used to create a new `TwitchApi` object using your stored credetials from the `creds.py` file.
 2. `creds.py` - Stores all of your credentails needed for contacting twitch servers. You will need to manually create this file and add the required parameters. To use the scraper, you will need three pieces of information added to this file:
-  * CLIENT_ID
-  * O_AUTH
-  * SECRET
+   * CLIENT_ID
+   * O_AUTH
+   * SECRET
 3. `streams.json` - List of all streams to be scanned. Provide the user name (i.e. name in the steamers url) in the list like shown in the example file.
 4. `games.json` - Used to "cache" searched games. This reduces the number of REST calls to the Twitch servers to get all of the needed information.
 
