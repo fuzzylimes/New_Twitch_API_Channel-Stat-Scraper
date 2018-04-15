@@ -174,5 +174,4 @@ for jfile in updated_files:
     if jfile != "streams.json" and jfile.endswith(".json"):
         stream_name = jfile.split('-')[0]
         os.system("mongoimport -h {} -d twitch -c {} -u {} -p {} --file ../json/{} --jsonArray --mode upsert --upsertFields session".format(CREDS.MONGO_SERVER, stream_name, CREDS.MLAB_ADMIN, CREDS.MLAB_ADMIN_PASS, jfile))
-    elif jfile == "streams.json":
-        os.system("mongoimport -h {} -d twitch -c {} -u {} -p {} --file ../json/{} --jsonArray --mode upsert --upsertFields user_id".format(CREDS.MONGO_SERVER, "streams", CREDS.MLAB_ADMIN, CREDS.MLAB_ADMIN_PASS, jfile))
+os.system("mongoimport -h {} -d twitch -c {} -u {} -p {} --file ../json/{} --jsonArray --mode upsert --upsertFields user_id".format(CREDS.MONGO_SERVER, "streams", CREDS.MLAB_ADMIN, CREDS.MLAB_ADMIN_PASS, "streams.json"))
