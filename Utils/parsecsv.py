@@ -20,6 +20,8 @@ users = []
 
 month = str(datetime.datetime.now()).split()[0][:7]
 
+updated_files = []
+
 for open_file in os.listdir("../csv/"):
     print(open_file)
     if open_file.endswith(month+".csv"):
@@ -27,6 +29,7 @@ for open_file in os.listdir("../csv/"):
         json_day_records = []
         f_name = open_file.split('-')[0]
         file_name = open_file.split('.')[0]
+        updated_files.append(file_name+".json")
 
         user_info = ph.User(f_name)
 
@@ -165,7 +168,8 @@ with open('../json/streams.json', 'w') as user_data:
     json.dump(users, user_data)
 
 
-for jfile in os.listdir("../json/"):
+#for jfile in os.listdir("../json/"):
+for jfile in updated_files:
     print(jfile)
     if jfile != "streams.json" and jfile.endswith(".json"):
         stream_name = jfile.split('-')[0]

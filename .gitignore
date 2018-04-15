@@ -6,3 +6,4 @@ csv
 html/*.html
 json
 venv
+.pyc
