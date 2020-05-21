@@ -10,7 +10,7 @@ class TwitchApi():
             print("Error grabbing token from server")
         else:
             self.token = res.json()['access_token']
-            self.authHeader = {'Authorization': 'Bearer ' + self.token}
+            self.authHeader = {'Authorization': 'Bearer ' + self.token, 'Client-ID': CREDS.CLIENT_ID}
     
     def GetGames(self, gid=None, name=None):
         if gid==None and name==None:

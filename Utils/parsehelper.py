@@ -11,7 +11,7 @@ class User():
             print("Error grabbing token from server")
         else:
             self.token = res.json()['access_token']
-            self.authHeader = {'Authorization': 'Bearer ' + self.token}
+            self.authHeader = {'Authorization': 'Bearer ' + self.token, 'Client-ID': CREDS.CLIENT_ID}
             self.userData = requests.get("https://api.twitch.tv/helix/users?login="+user_name, headers=self.authHeader).json()
             data = self.userData['data'][0]
             self.user_id = data['id']
