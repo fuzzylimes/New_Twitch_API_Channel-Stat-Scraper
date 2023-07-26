@@ -1,7 +1,7 @@
 import creds as CREDS
 import requests, json
 
-REG_URL = "https://api.twitch.tv/kraken/oauth2/token?client_id={}&client_secret={}&grant_type=client_credentials".format(CREDS.CLIENT_ID, CREDS.SECRET)
+REG_URL = "https://id.twitch.tv/oauth2/token?client_id={}&client_secret={}&grant_type=client_credentials".format(CREDS.CLIENT_ID, CREDS.SECRET)
 
 class TwitchApi():
     def __init__(self):
@@ -53,18 +53,27 @@ class TwitchApi():
             req = req.json()
             return req
 
+    # Twitch has deprecated this undocumented API. We can't get these numbers anymore
     def GetChatters(self, cid=None):
-        if cid == None:
-            return {"response":"Required channelId parameter missing!"}
-        req = requests.get("https://tmi.twitch.tv/group/user/{}/chatters".format(cid))
         return {
-            "chatter_count": req.json()['chatter_count'],
-            "mods": len(req.json()['chatters']['moderators']),
-            "staff": len(req.json()['chatters']['staff']),
-            "admins": len(req.json()['chatters']['admins']),
-            "global_mods": len(req.json()['chatters']['global_mods']),
-            "viewers": len(req.json()['chatters']['viewers'])
+            "chatter_count": 0,
+            "mods": 0,
+            "staff": 0,
+            "admins": 0,
+            "global_mods": 0,
+            "viewers": 0
         }
+        # if cid == None:
+        #     return {"response":"Required channelId parameter missing!"}
+        # req = requests.get("https://tmi.twitch.tv/group/user/{}/chatters".format(cid))
+        # return {
+        #     "chatter_count": req.json()['chatter_count'],
+        #     "mods": len(req.json()['chatters']['moderators']),
+        #     "staff": len(req.json()['chatters']['staff']),
+        #     "admins": len(req.json()['chatters']['admins']),
+        #     "global_mods": len(req.json()['chatters']['global_mods']),
+        #     "viewers": len(req.json()['chatters']['viewers'])
+        # }
     
     def GetFollowers(self, id):
         headers = {

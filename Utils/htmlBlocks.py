@@ -2,7 +2,7 @@ import requests, sys, os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import creds as CREDS
 
-REG_URL = "https://api.twitch.tv/kraken/oauth2/token?client_id={}&client_secret={}&grant_type=client_credentials".format(CREDS.CLIENT_ID, CREDS.SECRET)
+REG_URL = "https://id.twitch.tv/oauth2/token?client_id={}&client_secret={}&grant_type=client_credentials".format(CREDS.CLIENT_ID, CREDS.SECRET)
 
 class html():
     def __init__(self, user_name):
